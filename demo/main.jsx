@@ -7,7 +7,7 @@ const SplatViewer = lazy(() => import('../src/index.js'));
 const DEMO_SPLAT = {
     splatUrl: `${import.meta.env.BASE_URL}splats/colossal-foot.spz`,
     title: 'Colossal Foot',
-    subtitle: 'Compressed SPZ Gaussian Splat via SparkJS',
+    subtitle: 'Compressed SPZ Gaussian Splat',
     badge: 'SPZ',
 };
 
@@ -21,7 +21,7 @@ function DemoApp() {
                     subtitle={DEMO_SPLAT.subtitle}
                     badge={DEMO_SPLAT.badge}
                     paradata={paradata}
-                    initialTheme="dark"
+                    initialTheme="light"
                 />
             </Suspense>
         </div>

@@ -1,9 +1,9 @@
 import { jsx as t, jsxs as i, Fragment as qt } from "react/jsx-runtime";
-import { useRef as C, useCallback as V, useEffect as I, useState as N } from "react";
-import * as R from "three";
-import { Controls as Qt, Vector3 as X, MOUSE as be, TOUCH as ue, Quaternion as Tt, Spherical as Mt, Vector2 as Y, Ray as Jt, Plane as es, MathUtils as ts } from "three";
+import { useRef as C, useCallback as K, useEffect as I, useState as N } from "react";
+import * as P from "three";
+import { Controls as Qt, Vector3 as q, MOUSE as be, TOUCH as ue, Quaternion as Tt, Spherical as Mt, Vector2 as Y, Ray as Jt, Plane as es, MathUtils as ts } from "three";
 import { SparkRenderer as ss, SplatMesh as as } from "@sparkjsdev/spark";
-const Ct = { type: "change" }, at = { type: "start" }, At = { type: "end" }, ze = new Jt(), Pt = new es(), rs = Math.cos(70 * ts.DEG2RAD), A = new X(), O = 2 * Math.PI, _ = {
+const Ct = { type: "change" }, at = { type: "start" }, At = { type: "end" }, ze = new Jt(), Pt = new es(), rs = Math.cos(70 * ts.DEG2RAD), A = new q(), O = 2 * Math.PI, _ = {
   NONE: -1,
   ROTATE: 0,
   DOLLY: 1,
@@ -21,7 +21,7 @@ class os extends Qt {
    * @param {?HTMLDOMElement} domElement - The HTML element used for event listeners.
    */
   constructor(e, s = null) {
-    super(e, s), this.state = _.NONE, this.target = new X(), this.cursor = new X(), this.minDistance = 0, this.maxDistance = 1 / 0, this.minZoom = 0, this.maxZoom = 1 / 0, this.minTargetRadius = 0, this.maxTargetRadius = 1 / 0, this.minPolarAngle = 0, this.maxPolarAngle = Math.PI, this.minAzimuthAngle = -1 / 0, this.maxAzimuthAngle = 1 / 0, this.enableDamping = !1, this.dampingFactor = 0.05, this.enableZoom = !0, this.zoomSpeed = 1, this.enableRotate = !0, this.rotateSpeed = 1, this.keyRotateSpeed = 1, this.enablePan = !0, this.panSpeed = 1, this.screenSpacePanning = !0, this.keyPanSpeed = 7, this.zoomToCursor = !1, this.autoRotate = !1, this.autoRotateSpeed = 2, this.keys = { LEFT: "ArrowLeft", UP: "ArrowUp", RIGHT: "ArrowRight", BOTTOM: "ArrowDown" }, this.mouseButtons = { LEFT: be.ROTATE, MIDDLE: be.DOLLY, RIGHT: be.PAN }, this.touches = { ONE: ue.ROTATE, TWO: ue.DOLLY_PAN }, this.target0 = this.target.clone(), this.position0 = this.object.position.clone(), this.zoom0 = this.object.zoom, this._domElementKeyEvents = null, this._lastPosition = new X(), this._lastQuaternion = new Tt(), this._lastTargetPosition = new X(), this._quat = new Tt().setFromUnitVectors(e.up, new X(0, 1, 0)), this._quatInverse = this._quat.clone().invert(), this._spherical = new Mt(), this._sphericalDelta = new Mt(), this._scale = 1, this._panOffset = new X(), this._rotateStart = new Y(), this._rotateEnd = new Y(), this._rotateDelta = new Y(), this._panStart = new Y(), this._panEnd = new Y(), this._panDelta = new Y(), this._dollyStart = new Y(), this._dollyEnd = new Y(), this._dollyDelta = new Y(), this._dollyDirection = new X(), this._mouse = new Y(), this._performCursorZoom = !1, this._pointers = [], this._pointerPositions = {}, this._controlActive = !1, this._onPointerMove = is.bind(this), this._onPointerDown = ns.bind(this), this._onPointerUp = ls.bind(this), this._onContextMenu = bs.bind(this), this._onMouseWheel = hs.bind(this), this._onKeyDown = ms.bind(this), this._onTouchStart = ps.bind(this), this._onTouchMove = us.bind(this), this._onMouseDown = ds.bind(this), this._onMouseMove = cs.bind(this), this._interceptControlDown = fs.bind(this), this._interceptControlUp = xs.bind(this), this.domElement !== null && this.connect(this.domElement), this.update();
+    super(e, s), this.state = _.NONE, this.target = new q(), this.cursor = new q(), this.minDistance = 0, this.maxDistance = 1 / 0, this.minZoom = 0, this.maxZoom = 1 / 0, this.minTargetRadius = 0, this.maxTargetRadius = 1 / 0, this.minPolarAngle = 0, this.maxPolarAngle = Math.PI, this.minAzimuthAngle = -1 / 0, this.maxAzimuthAngle = 1 / 0, this.enableDamping = !1, this.dampingFactor = 0.05, this.enableZoom = !0, this.zoomSpeed = 1, this.enableRotate = !0, this.rotateSpeed = 1, this.keyRotateSpeed = 1, this.enablePan = !0, this.panSpeed = 1, this.screenSpacePanning = !0, this.keyPanSpeed = 7, this.zoomToCursor = !1, this.autoRotate = !1, this.autoRotateSpeed = 2, this.keys = { LEFT: "ArrowLeft", UP: "ArrowUp", RIGHT: "ArrowRight", BOTTOM: "ArrowDown" }, this.mouseButtons = { LEFT: be.ROTATE, MIDDLE: be.DOLLY, RIGHT: be.PAN }, this.touches = { ONE: ue.ROTATE, TWO: ue.DOLLY_PAN }, this.target0 = this.target.clone(), this.position0 = this.object.position.clone(), this.zoom0 = this.object.zoom, this._domElementKeyEvents = null, this._lastPosition = new q(), this._lastQuaternion = new Tt(), this._lastTargetPosition = new q(), this._quat = new Tt().setFromUnitVectors(e.up, new q(0, 1, 0)), this._quatInverse = this._quat.clone().invert(), this._spherical = new Mt(), this._sphericalDelta = new Mt(), this._scale = 1, this._panOffset = new q(), this._rotateStart = new Y(), this._rotateEnd = new Y(), this._rotateDelta = new Y(), this._panStart = new Y(), this._panEnd = new Y(), this._panDelta = new Y(), this._dollyStart = new Y(), this._dollyEnd = new Y(), this._dollyDelta = new Y(), this._dollyDirection = new q(), this._mouse = new Y(), this._performCursorZoom = !1, this._pointers = [], this._pointerPositions = {}, this._controlActive = !1, this._onPointerMove = is.bind(this), this._onPointerDown = ns.bind(this), this._onPointerUp = ls.bind(this), this._onContextMenu = bs.bind(this), this._onMouseWheel = hs.bind(this), this._onKeyDown = ms.bind(this), this._onTouchStart = ps.bind(this), this._onTouchMove = us.bind(this), this._onMouseDown = ds.bind(this), this._onMouseMove = cs.bind(this), this._interceptControlDown = fs.bind(this), this._interceptControlUp = xs.bind(this), this.domElement !== null && this.connect(this.domElement), this.update();
   }
   connect(e) {
     super.connect(e), this.domElement.addEventListener("pointerdown", this._onPointerDown), this.domElement.addEventListener("pointercancel", this._onPointerUp), this.domElement.addEventListener("contextmenu", this._onContextMenu), this.domElement.addEventListener("wheel", this._onMouseWheel, { passive: !1 }), this.domElement.getRootNode().addEventListener("keydown", this._interceptControlDown, { passive: !0, capture: !0 }), this.domElement.style.touchAction = "none";
@@ -104,11 +104,11 @@ class os extends Qt {
         const u = y - c;
         this.object.position.addScaledVector(this._dollyDirection, u), this.object.updateMatrixWorld(), h = !!u;
       } else if (this.object.isOrthographicCamera) {
-        const y = new X(this._mouse.x, this._mouse.y, 0);
+        const y = new q(this._mouse.x, this._mouse.y, 0);
         y.unproject(this.object);
         const u = this.object.zoom;
         this.object.zoom = Math.max(this.minZoom, Math.min(this.maxZoom, this.object.zoom / this._scale)), this.object.updateProjectionMatrix(), h = u !== this.object.zoom;
-        const m = new X(this._mouse.x, this._mouse.y, 0);
+        const m = new q(this._mouse.x, this._mouse.y, 0);
         m.unproject(this.object), this.object.position.sub(m).add(y), this.object.updateMatrixWorld(), c = A.length();
       } else
         console.warn("WARNING: OrbitControls.js encountered an unknown camera type - zoom to cursor disabled."), this.zoomToCursor = !1;
@@ -478,7 +478,7 @@ async function ys({
   );
   if (c && m.quaternion.set(1, 0, 0, 0), m.opacity = h, typeof m.maxSh == "number" && (m.maxSh = n), s.add(m), m.initialized && typeof m.initialized.then == "function" && await m.initialized, y())
     return s.remove(m), typeof m.dispose == "function" && m.dispose(), null;
-  const w = new R.Box3();
+  const w = new P.Box3();
   if (typeof m.getBoundingBox == "function")
     try {
       const k = m.getBoundingBox(!1);
@@ -487,22 +487,22 @@ async function ys({
     }
   if (w.isEmpty() && w.setFromObject(m), !u && typeof m.forEachSplat == "function" && m.numSplats > 0)
     try {
-      const F = Math.max(1, Math.floor(m.numSplats / 2e5)), b = [], z = [], q = [];
-      if (m.forEachSplat((j, Q, K, J, Z) => {
-        j % F !== 0 || Z < 0.3 || (b.push(Q.x), z.push(Q.y), q.push(Q.z));
+      const F = Math.max(1, Math.floor(m.numSplats / 2e5)), b = [], z = [], Q = [];
+      if (m.forEachSplat((j, J, Z, W, G) => {
+        j % F !== 0 || G < 0.3 || (b.push(J.x), z.push(J.y), Q.push(J.z));
       }), b.length > 100) {
-        const j = (Z, fe) => {
-          const G = Float32Array.from(Z).sort();
-          return G[Math.min(G.length - 1, Math.floor(G.length * fe))];
-        }, J = new R.Box3(
-          new R.Vector3(j(b, 0.05), j(z, 0.05), j(q, 0.05)),
-          new R.Vector3(j(b, 0.95), j(z, 0.95), j(q, 0.95))
+        const j = (G, fe) => {
+          const U = Float32Array.from(G).sort();
+          return U[Math.min(U.length - 1, Math.floor(U.length * fe))];
+        }, W = new P.Box3(
+          new P.Vector3(j(b, 3e-3), j(z, 3e-3), j(Q, 3e-3)),
+          new P.Vector3(j(b, 0.997), j(z, 0.997), j(Q, 0.997))
         );
-        m.updateWorldMatrix(!0, !1), J.applyMatrix4(m.matrixWorld), J.isEmpty() || w.copy(J);
+        W.expandByVector(W.getSize(new P.Vector3()).multiplyScalar(0.02)), m.updateWorldMatrix(!0, !1), W.applyMatrix4(m.matrixWorld), W.isEmpty() || w.copy(W);
       }
     } catch {
     }
-  const x = new R.Vector3(), o = new R.Vector3();
+  const x = new P.Vector3(), o = new P.Vector3();
   w.isEmpty() || (w.getSize(x), w.getCenter(o));
   const p = {
     splatCount: typeof m.numSplats == "number" ? m.numSplats : 0,
@@ -532,12 +532,12 @@ function Be(a) {
   }) : a.material && ((s = (e = a.material).dispose) == null || s.call(e)));
 }
 function _s({ center: a, size: e, minY: s }) {
-  const r = Math.max(e.x, e.y, e.z, 0.1), n = Math.pow(10, Math.ceil(Math.log10(Math.max(r * 2, 0.1)))), h = new R.GridHelper(n, 20, 16096779, 3359061);
+  const r = Math.max(e.x, e.y, e.z, 0.1), n = Math.pow(10, Math.ceil(Math.log10(Math.max(r * 2, 0.1)))), h = new P.GridHelper(n, 20, 16096779, 3359061);
   h.position.set(a.x, Number.isFinite(s) ? s : a.y - e.y * 0.5, a.z), h.visible = !1;
-  const c = new R.Box3(
+  const c = new P.Box3(
     a.clone().sub(e.clone().multiplyScalar(0.5)),
     a.clone().add(e.clone().multiplyScalar(0.5))
-  ), y = new R.Box3Helper(c, 16096779);
+  ), y = new P.Box3Helper(c, 16096779);
   return y.visible = !1, { grid: h, bbox: y };
 }
 function ws(a, e, s = {}) {
@@ -611,18 +611,18 @@ function Ms({
   theme: F,
   onToggleTheme: b,
   onCopyShareLink: z,
-  onDownloadOriginal: q,
+  onDownloadOriginal: Q,
   onScreenshot: j,
-  enableLocalFiles: Q = !1,
-  onOpenLocalFile: K,
-  showTelemetry: J = !0,
-  telemetryOpen: Z = !1,
+  enableLocalFiles: J = !1,
+  onOpenLocalFile: Z,
+  showTelemetry: W = !0,
+  telemetryOpen: G = !1,
   onToggleTelemetry: fe,
-  onToggleParadata: G,
+  onToggleParadata: U,
   onToggleFullscreen: Te,
   children: he
 }) {
-  const de = C(null), xe = C(null), re = !!(n && c), me = V(() => {
+  const de = C(null), xe = C(null), re = !!(n && c), me = K(() => {
     o == null || o(!1);
   }, [o]), B = "bg-white/90 text-slate-700 border-slate-200/90 hover:bg-slate-100 dark:bg-slate-900/85 dark:text-slate-200 dark:border-slate-800/80 dark:hover:bg-slate-800";
   return /* @__PURE__ */ i("div", { className: "pointer-events-none absolute inset-x-0 top-3 z-20 px-3 sm:px-4 flex flex-wrap items-start justify-between gap-2", children: [
@@ -645,11 +645,11 @@ function Ms({
       ] })
     ] }),
     /* @__PURE__ */ i("div", { className: "pointer-events-auto flex items-center gap-1.5 flex-wrap justify-end ml-auto", children: [
-      Q && /* @__PURE__ */ i(
+      J && /* @__PURE__ */ i(
         "button",
         {
           type: "button",
-          onClick: K,
+          onClick: Z,
           "aria-label": "Open local splat file",
           title: "Open a local splat file (or drag and drop)",
           className: `flex items-center gap-1.5 px-2.5 py-2 text-xs font-medium rounded-xl border backdrop-blur-md transition-all shadow-xl ${B}`,
@@ -676,8 +676,8 @@ function Ms({
           ref: de,
           className: "relative",
           onKeyDown: ($) => {
-            var U;
-            $.key === "Escape" && x && ($.stopPropagation(), me(), (U = xe.current) == null || U.focus());
+            var X;
+            $.key === "Escape" && x && ($.stopPropagation(), me(), (X = xe.current) == null || X.focus());
           },
           children: [
             /* @__PURE__ */ i(
@@ -716,12 +716,12 @@ function Ms({
                       ]
                     }
                   ),
-                  q && /* @__PURE__ */ i(
+                  Q && /* @__PURE__ */ i(
                     "button",
                     {
                       type: "button",
                       onClick: () => {
-                        me(), q();
+                        me(), Q();
                       },
                       className: "w-full text-left px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-between",
                       children: [
@@ -742,7 +742,7 @@ function Ms({
           type: "button",
           "aria-pressed": h,
           "aria-expanded": h,
-          onClick: G,
+          onClick: U,
           className: `flex items-center gap-1.5 px-2.5 py-2 text-xs font-medium rounded-xl border backdrop-blur-md transition-all shadow-xl ${h ? "bg-amber-500 text-slate-950 border-amber-400 shadow-amber-500/20" : B}`,
           children: [
             /* @__PURE__ */ t("svg", { "aria-hidden": "true", className: "w-4 h-4", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ t("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" }) }),
@@ -750,16 +750,16 @@ function Ms({
           ]
         }
       ),
-      J && /* @__PURE__ */ t(
+      W && /* @__PURE__ */ t(
         "button",
         {
           type: "button",
-          "aria-pressed": Z,
-          "aria-expanded": Z,
+          "aria-pressed": G,
+          "aria-expanded": G,
           "aria-label": "Toggle splat telemetry",
           title: "Splat telemetry (I)",
           onClick: fe,
-          className: `flex items-center justify-center p-2 text-xs font-medium rounded-xl border backdrop-blur-md transition-all shadow-xl ${Z ? "bg-amber-500 text-slate-950 border-amber-400 shadow-amber-500/20" : B}`,
+          className: `flex items-center justify-center p-2 text-xs font-medium rounded-xl border backdrop-blur-md transition-all shadow-xl ${G ? "bg-amber-500 text-slate-950 border-amber-400 shadow-amber-500/20" : B}`,
           children: /* @__PURE__ */ t("svg", { "aria-hidden": "true", className: "w-4 h-4", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ t("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" }) })
         }
       ),
@@ -1619,30 +1619,30 @@ function Gs({
   initialBackground: F = "#090d16",
   persistBackground: b = !0,
   mmPerUnit: z = null,
-  measureUnit: q = "mm",
+  measureUnit: Q = "mm",
   showScaleBar: j = !0,
-  showTelemetry: Q = !0,
-  enableLocalFiles: K = !0,
-  onLoad: J = null,
-  onError: Z = null,
+  showTelemetry: J = !0,
+  enableLocalFiles: Z = !0,
+  onLoad: W = null,
+  onError: G = null,
   children: fe = null
 }) {
-  const G = C(null), Te = C(null), he = C(null), de = C(null), xe = C(null), re = C(null), me = C(new R.Group()), B = C(null), $ = C(null), U = C(null), oe = C(null), ge = C(null), rt = C({ center: new R.Vector3(), size: new R.Vector3(1, 1, 1) }), ye = C({ onLoad: J, onError: Z, enableDeepLink: m });
-  ye.current = { onLoad: J, onError: Z, enableDeepLink: m };
+  const U = C(null), Te = C(null), he = C(null), de = C(null), xe = C(null), re = C(null), me = C(new P.Group()), B = C(null), $ = C(null), X = C(null), oe = C(null), ge = C(null), rt = C({ center: new P.Vector3(), size: new P.Vector3(1, 1, 1) }), ye = C({ onLoad: W, onError: G, enableDeepLink: m });
+  ye.current = { onLoad: W, onError: G, enableDeepLink: m };
   const [ot, jt] = N(k), [ce, Ie] = N(
     () => (b ? vs() : null) || (k === "light" && F === "#090d16" ? "#f1f5f9" : F)
-  ), [ke, nt] = N(!1), [_e, it] = N(!1), [Fe, lt] = N(!1), [ee, dt] = N(1), [te, ct] = N(3), [Me, $e] = N(-1), [Ot, ht] = N(!1), [zt, Bt] = N(!1), [P, It] = N(null), [Ft, He] = N(!1), mt = C(null), [We, Ce] = N(null), [Pe, Ye] = N(!1), [pt, Re] = N(!1), [ut, bt] = N(null), [we, Ae] = N(!0), [Ve, ft] = N(null), [Ne, Ke] = N(!1), [$t, xt] = N(0), [Ze, Ht] = N({ splatCount: 0, paged: !1, size: null }), [Wt, Yt] = N(0), Ge = C(0), gt = C(z);
+  ), [ke, nt] = N(!1), [_e, it] = N(!1), [Fe, lt] = N(!1), [ee, dt] = N(1), [te, ct] = N(3), [Me, $e] = N(-1), [Ot, ht] = N(!1), [zt, Bt] = N(!1), [R, It] = N(null), [Ft, He] = N(!1), mt = C(null), [We, Ce] = N(null), [Pe, Ve] = N(!1), [pt, Re] = N(!1), [ut, bt] = N(null), [we, Ae] = N(!0), [Ye, ft] = N(null), [Ne, Ke] = N(!1), [$t, xt] = N(0), [Ze, Ht] = N({ splatCount: 0, paged: !1, size: null }), [Wt, Vt] = N(0), Ge = C(0), gt = C(z);
   gt.current = z;
   const yt = C({ opacity: ee, maxSh: te, showGrid: ke, showBounds: _e });
   yt.current = { opacity: ee, maxSh: te, showGrid: ke, showBounds: _e };
-  const ve = V((l) => {
+  const ve = K((l) => {
     bt(l), ge.current && clearTimeout(ge.current), ge.current = setTimeout(() => {
       bt((d) => d === l ? null : d);
     }, 2600);
   }, []);
   I(() => {
-    if (Ce(null), P) {
-      Ce(P.size);
+    if (Ce(null), R) {
+      Ce(R.size);
       return;
     }
     if (!a) return;
@@ -1652,30 +1652,30 @@ function Gs({
       d.ok && f > 0 && Ce(f);
     }).catch(() => {
     }), () => l.abort();
-  }, [a, P]), I(() => {
-    if (!(we || We || !a || P))
+  }, [a, R]), I(() => {
+    if (!(we || We || !a || R))
       try {
         const l = new URL(a, window.location.href).href, d = performance.getEntriesByName(l).pop(), f = (d == null ? void 0 : d.decodedBodySize) || (d == null ? void 0 : d.encodedBodySize) || 0;
         f > 0 && Ce(f);
       } catch {
       }
-  }, [we, We, a, P]);
-  const kt = V((l) => {
+  }, [we, We, a, R]);
+  const kt = K((l) => {
     l && (It(l), window.history.replaceState(null, "", window.location.pathname + window.location.search));
   }, []);
   I(() => () => {
     ge.current && clearTimeout(ge.current);
   }, []);
-  const Vt = V(() => {
+  const Yt = K(() => {
     jt((l) => {
       const d = l === "dark" ? "light" : "dark";
       return Ie((f) => d === "light" && f === "#090d16" ? "#f1f5f9" : d === "dark" && f === "#f1f5f9" ? "#090d16" : f), d;
     });
-  }, []), Se = V((l = "iso") => {
+  }, []), Se = K((l = "iso") => {
     const d = de.current, f = re.current;
     if (!d || !f) return;
     oe.current = null, $e(-1);
-    const { center: v, size: S } = rt.current, E = Math.max(S.x, S.y, S.z, 0.1), T = R.MathUtils.degToRad(d.fov), se = Math.abs(E / 2 / Math.tan(T / 2)) * 1.45, ae = v.clone();
+    const { center: v, size: S } = rt.current, E = Math.max(S.x, S.y, S.z, 0.1), T = P.MathUtils.degToRad(d.fov), se = Math.abs(E / 2 / Math.tan(T / 2)) * 1.45, ae = v.clone();
     switch (l) {
       case "front":
         ae.z += se;
@@ -1692,28 +1692,28 @@ function Gs({
         break;
     }
     d.position.copy(ae), f.target.copy(v), f.update();
-  }, []), Ue = V(
+  }, []), Ue = K(
     (l) => {
       if (!Array.isArray(u) || !u[l]) return;
       const d = de.current, f = re.current, v = u[l];
       if ($e(l), d && f && Array.isArray(v.position) && v.position.length === 3) {
-        const S = Array.isArray(v.target) && v.target.length === 3 ? new R.Vector3(...v.target) : f.target.clone();
+        const S = Array.isArray(v.target) && v.target.length === 3 ? new P.Vector3(...v.target) : f.target.clone();
         oe.current = {
-          targetPos: new R.Vector3(...v.position),
+          targetPos: new P.Vector3(...v.position),
           targetLook: S,
           alpha: 0
         };
       }
     },
     [u]
-  ), De = V(
+  ), De = K(
     (l) => {
       if (!Array.isArray(u) || u.length === 0) return;
       const d = Me < 0 ? l < 0 ? u.length - 1 : 0 : (Me + l + u.length) % u.length;
       Ue(d);
     },
     [u, Me, Ue]
-  ), Kt = V(async () => {
+  ), Kt = K(async () => {
     var S;
     const l = de.current, d = re.current;
     if (!l || !d) return;
@@ -1726,21 +1726,21 @@ function Gs({
     } catch (E) {
       console.error("Failed to copy view link:", E), ve("Could not copy link; view link is in the address bar");
     }
-  }, [ee, te, ce, ve]), Zt = V(() => {
+  }, [ee, te, ce, ve]), Zt = K(() => {
     const l = xe.current, d = he.current, f = de.current;
     !l || !d || !f || Ne || (l.render(d, f), l.domElement.toBlob((v) => {
       if (!v) return;
-      const S = String((P == null ? void 0 : P.name) || e || "splat").replace(/\.[^/.]+$/, "");
+      const S = String((R == null ? void 0 : R.name) || e || "splat").replace(/\.[^/.]+$/, "");
       ks(v, `${S}_splat.png`), ve("Snapshot saved");
     }));
-  }, [e, P, Ne, ve]), Gt = V(() => {
-    if (!a || P) return;
+  }, [e, R, Ne, ve]), Gt = K(() => {
+    if (!a || R) return;
     const l = document.createElement("a");
     l.href = a;
     const d = String(e || "splat").split("/").pop() || "splat.ply";
     l.download = d, document.body.appendChild(l), l.click(), l.remove();
-  }, [a, P, e]), Ut = V(() => {
-    G.current && (document.fullscreenElement ? document.exitFullscreen().catch((l) => console.error(l)) : G.current.requestFullscreen().catch((l) => console.error(l)));
+  }, [a, R, e]), Ut = K(() => {
+    U.current && (document.fullscreenElement ? document.exitFullscreen().catch((l) => console.error(l)) : U.current.requestFullscreen().catch((l) => console.error(l)));
   }, []);
   return I(() => {
     const l = () => Bt(!!document.fullscreenElement);
@@ -1754,14 +1754,14 @@ function Gs({
     };
     return window.addEventListener("keydown", l), () => window.removeEventListener("keydown", l);
   }, [Pe, Se, De]), I(() => {
-    const l = Te.current, d = G.current || l;
+    const l = Te.current, d = U.current || l;
     if (!l || !d) return;
     l.innerHTML = "";
-    const f = d.clientWidth || 800, v = d.clientHeight || 600, S = new R.Scene();
-    S.background = new R.Color(ce), he.current = S;
-    const E = new R.PerspectiveCamera(45, f / v, 0.01, 2e3);
+    const f = d.clientWidth || 800, v = d.clientHeight || 600, S = new P.Scene();
+    S.background = new P.Color(ce), he.current = S;
+    const E = new P.PerspectiveCamera(45, f / v, 0.01, 2e3);
     E.position.set(0, 0.6, 2.5), de.current = E;
-    const T = new R.WebGLRenderer({
+    const T = new P.WebGLRenderer({
       antialias: !1,
       alpha: !1,
       preserveDrawingBuffer: !0,
@@ -1776,18 +1776,18 @@ function Gs({
     T.domElement.addEventListener("webglcontextlost", se, !1), T.domElement.addEventListener("webglcontextrestored", ae, !1);
     const Xe = gs(T);
     S.add(Xe), S.add(me.current);
-    const W = new os(E, T.domElement);
-    W.enableDamping = !0, W.dampingFactor = 0.06, re.current = W;
+    const V = new os(E, T.domElement);
+    V.enableDamping = !0, V.dampingFactor = 0.06, re.current = V;
     const _t = () => {
       oe.current = null;
     };
-    W.addEventListener("start", _t);
+    V.addEventListener("start", _t);
     let Le = !1, je = null;
-    Ae(!0), ft(null), Ke(!1), $e(-1), Ye(!1), ht(!1), oe.current = null;
-    const wt = !!(a || P);
+    Ae(!0), ft(null), Ke(!1), $e(-1), Ve(!1), ht(!1), oe.current = null;
+    const wt = !!(a || R);
     wt || Ae(!1), (wt ? ys({
       url: a,
-      file: P,
+      file: R,
       parentGroup: me.current,
       paged: c,
       maxSh: te,
@@ -1799,7 +1799,7 @@ function Gs({
       if (Le || !g) return;
       je = g.dispose, B.current = g.splatMesh;
       const M = yt.current;
-      if (g.splatMesh.opacity = M.opacity, typeof g.splatMesh.maxSh == "number" && (g.splatMesh.maxSh = M.maxSh), Be($.current), Be(U.current), $.current && S.remove($.current), U.current && S.remove(U.current), !g.stats.box.isEmpty()) {
+      if (g.splatMesh.opacity = M.opacity, typeof g.splatMesh.maxSh == "number" && (g.splatMesh.maxSh = M.maxSh), Be($.current), Be(X.current), $.current && S.remove($.current), X.current && S.remove(X.current), !g.stats.box.isEmpty()) {
         rt.current = {
           center: g.stats.center,
           size: g.stats.size
@@ -1809,7 +1809,7 @@ function Gs({
           size: g.stats.size,
           minY: g.stats.box.min.y
         });
-        D.visible = M.showGrid, Qe.visible = M.showBounds, S.add(D), S.add(Qe), $.current = D, U.current = Qe;
+        D.visible = M.showGrid, Qe.visible = M.showBounds, S.add(D), S.add(Qe), $.current = D, X.current = Qe;
       }
       if (Ht({
         splatCount: g.stats.splatCount,
@@ -1818,7 +1818,7 @@ function Gs({
       }), Ae(!1), ye.current.enableDeepLink) {
         const D = Es(window.location.hash);
         if (D != null && D.p && (D != null && D.t)) {
-          E.position.fromArray(D.p), W.target.fromArray(D.t), W.update(), typeof D.opacity == "number" && dt(D.opacity), typeof D.maxSh == "number" && ct(D.maxSh), D.bg && Ie(D.bg), (ie = (ne = ye.current).onLoad) == null || ie.call(ne, g.stats);
+          E.position.fromArray(D.p), V.target.fromArray(D.t), V.update(), typeof D.opacity == "number" && dt(D.opacity), typeof D.maxSh == "number" && ct(D.maxSh), D.bg && Ie(D.bg), (ie = (ne = ye.current).onLoad) == null || ie.call(ne, g.stats);
           return;
         }
       }
@@ -1834,16 +1834,16 @@ function Gs({
         const M = gt.current, ne = d.clientHeight;
         let ie = 0;
         if (M > 0 && ne > 0) {
-          const Oe = 2 * E.position.distanceTo(W.target) * Math.tan(R.MathUtils.degToRad(E.fov) / 2);
+          const Oe = 2 * E.position.distanceTo(V.target) * Math.tan(P.MathUtils.degToRad(E.fov) / 2);
           ie = ne / (Oe * M);
         }
-        (ie === 0 ? Ge.current !== 0 : Fs(Ge.current, ie)) && (Ge.current = ie, Yt(ie));
+        (ie === 0 ? Ge.current !== 0 : Fs(Ge.current, ie)) && (Ge.current = ie, Vt(ie));
       }
       if (oe.current) {
         const M = oe.current;
-        M.alpha = Math.min(M.alpha + 0.08, 1), E.position.lerp(M.targetPos, M.alpha), W.target.lerp(M.targetLook, M.alpha), M.alpha >= 1 && (oe.current = null);
+        M.alpha = Math.min(M.alpha + 0.08, 1), E.position.lerp(M.targetPos, M.alpha), V.target.lerp(M.targetLook, M.alpha), M.alpha >= 1 && (oe.current = null);
       }
-      W.update(), T.render(S, E);
+      V.update(), T.render(S, E);
     };
     St();
     const Xt = () => {
@@ -1851,12 +1851,12 @@ function Gs({
       g > 0 && M > 0 && (E.aspect = g / M, E.updateProjectionMatrix(), T.setSize(g, M, !1));
     }, Et = new ResizeObserver(Xt);
     return Et.observe(d), () => {
-      Le = !0, cancelAnimationFrame(Nt), Et.disconnect(), W.removeEventListener("start", _t), W.dispose(), je == null || je(), Be($.current), Be(U.current), typeof Xe.dispose == "function" && Xe.dispose(), T.domElement.removeEventListener("webglcontextlost", se, !1), T.domElement.removeEventListener("webglcontextrestored", ae, !1), T.domElement.parentNode && T.domElement.parentNode.removeChild(T.domElement), T.dispose(), T.forceContextLoss();
+      Le = !0, cancelAnimationFrame(Nt), Et.disconnect(), V.removeEventListener("start", _t), V.dispose(), je == null || je(), Be($.current), Be(X.current), typeof Xe.dispose == "function" && Xe.dispose(), T.domElement.removeEventListener("webglcontextlost", se, !1), T.domElement.removeEventListener("webglcontextrestored", ae, !1), T.domElement.parentNode && T.domElement.parentNode.removeChild(T.domElement), T.dispose(), T.forceContextLoss();
     };
-  }, [a, P, c, y, $t, Se]), I(() => {
+  }, [a, R, c, y, $t, Se]), I(() => {
     $.current && ($.current.visible = ke);
   }, [ke]), I(() => {
-    U.current && (U.current.visible = _e);
+    X.current && (X.current.visible = _e);
   }, [_e]), I(() => {
     re.current && (re.current.autoRotate = Fe);
   }, [Fe]), I(() => {
@@ -1864,19 +1864,19 @@ function Gs({
   }, [ee]), I(() => {
     B.current && typeof B.current.maxSh == "number" && (B.current.maxSh = te);
   }, [te]), I(() => {
-    he.current && (he.current.background = new R.Color(ce)), b && Ss(ce);
+    he.current && (he.current.background = new P.Color(ce)), b && Ss(ce);
   }, [ce, b]), /* @__PURE__ */ i(
     "div",
     {
-      ref: G,
-      onDragOver: K ? (l) => {
+      ref: U,
+      onDragOver: Z ? (l) => {
         var d, f;
         (f = (d = l.dataTransfer) == null ? void 0 : d.types) != null && f.includes("Files") && (l.preventDefault(), He(!0));
       } : void 0,
-      onDragLeave: K ? (l) => {
+      onDragLeave: Z ? (l) => {
         l.currentTarget.contains(l.relatedTarget) || He(!1);
       } : void 0,
-      onDrop: K ? (l) => {
+      onDrop: Z ? (l) => {
         var d, f;
         (f = (d = l.dataTransfer) == null ? void 0 : d.files) != null && f.length && (l.preventDefault(), He(!1), kt(l.dataTransfer.files[0]));
       } : void 0,
@@ -1892,7 +1892,7 @@ function Gs({
             className: "w-full h-full focus:outline-hidden cursor-grab active:cursor-grabbing"
           }
         ),
-        K && /* @__PURE__ */ t(
+        Z && /* @__PURE__ */ t(
           "input",
           {
             ref: mt,
@@ -1907,7 +1907,7 @@ function Gs({
           }
         ),
         Ft && /* @__PURE__ */ t("div", { className: "pointer-events-none absolute inset-3 z-50 flex items-center justify-center rounded-2xl border-2 border-dashed border-amber-500 bg-amber-500/10 text-sm font-semibold text-amber-700 dark:text-amber-300", children: "Drop a splat file to open it" }),
-        !a && !P && !we && /* @__PURE__ */ t("div", { className: "pointer-events-none absolute inset-0 z-10 flex items-center justify-center p-6 text-center text-sm text-slate-500 dark:text-slate-400", children: K ? "Drop a .ply, .spz, .splat, .ksplat or .sog file here, or use the Open button." : "No splat source provided." }),
+        !a && !R && !we && /* @__PURE__ */ t("div", { className: "pointer-events-none absolute inset-0 z-10 flex items-center justify-center p-6 text-center text-sm text-slate-500 dark:text-slate-400", children: Z ? "Drop a .ply, .spz, .splat, .ksplat or .sog file here, or use the Open button." : "No splat source provided." }),
         ut && /* @__PURE__ */ t(
           "div",
           {
@@ -1949,14 +1949,14 @@ function Gs({
             ]
           }
         ),
-        Ve && !Ne && /* @__PURE__ */ t(
+        Ye && !Ne && /* @__PURE__ */ t(
           "div",
           {
             role: "alert",
             className: "absolute inset-0 z-40 flex items-center justify-center bg-slate-100/95 dark:bg-slate-950/95 p-6",
             children: /* @__PURE__ */ i("div", { className: "max-w-md bg-red-50 border-red-300 dark:bg-red-950/40 dark:border-red-500/40 border rounded-2xl p-5 text-center", children: [
               /* @__PURE__ */ t("p", { className: "text-sm font-semibold text-red-700 dark:text-red-300 mb-1", children: "Splat Load Error" }),
-              /* @__PURE__ */ t("p", { className: "text-xs text-red-600 dark:text-red-200/80", children: Ve })
+              /* @__PURE__ */ t("p", { className: "text-xs text-red-600 dark:text-red-200/80", children: Ye })
             ] })
           }
         ),
@@ -1977,22 +1977,22 @@ function Gs({
             downloadMenuOpen: Ot,
             setDownloadMenuOpen: ht,
             loading: we,
-            error: Ve,
+            error: Ye,
             isFullscreen: zt,
             theme: ot,
-            onToggleTheme: Vt,
+            onToggleTheme: Yt,
             onCopyShareLink: Kt,
-            onDownloadOriginal: a && !P ? Gt : void 0,
-            enableLocalFiles: K,
+            onDownloadOriginal: a && !R ? Gt : void 0,
+            enableLocalFiles: Z,
             onOpenLocalFile: () => {
               var l;
               return (l = mt.current) == null ? void 0 : l.click();
             },
             onScreenshot: Zt,
-            showTelemetry: Q,
+            showTelemetry: J,
             telemetryOpen: pt,
             onToggleTelemetry: () => Re((l) => !l),
-            onToggleParadata: () => Ye((l) => !l),
+            onToggleParadata: () => Ve((l) => !l),
             onToggleFullscreen: Ut,
             children: fe
           }
@@ -2012,7 +2012,7 @@ function Gs({
             {
               pixelsPerMm: Wt,
               isUnscaled: !(z > 0),
-              measureUnit: q
+              measureUnit: Q
             }
           ) }),
           /* @__PURE__ */ t(
@@ -2039,14 +2039,14 @@ function Gs({
         /* @__PURE__ */ t(
           zs,
           {
-            isOpen: pt && Q,
+            isOpen: pt && J,
             onClose: () => Re(!1),
             stats: Ze,
             fileBytes: We,
             mmPerUnit: z,
-            measureUnit: q,
-            fileName: (P == null ? void 0 : P.name) || (e !== "splat" ? e : null),
-            splatUrl: P ? P.name : a,
+            measureUnit: Q,
+            fileName: (R == null ? void 0 : R.name) || (e !== "splat" ? e : null),
+            splatUrl: R ? R.name : a,
             opacity: ee,
             maxSh: te
           }
@@ -2055,7 +2055,7 @@ function Gs({
           js,
           {
             isOpen: Pe && !!x && o,
-            onClose: () => Ye(!1),
+            onClose: () => Ve(!1),
             paradata: x
           }
         )

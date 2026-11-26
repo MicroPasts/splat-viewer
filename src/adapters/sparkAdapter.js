@@ -89,12 +89,14 @@ export async function loadSplatAsset({
                     const sorted = Float32Array.from(arr).sort();
                     return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * p))];
                 };
-                const lo = 0.05;
-                const hi = 0.95;
+                // Trim only the extreme tails: wide trims cut into the real object.
+                const lo = 0.003;
+                const hi = 0.997;
                 const robust = new THREE.Box3(
                     new THREE.Vector3(pct(xs, lo), pct(ys, lo), pct(zs, lo)),
                     new THREE.Vector3(pct(xs, hi), pct(ys, hi), pct(zs, hi))
                 );
+                robust.expandByVector(robust.getSize(new THREE.Vector3()).multiplyScalar(0.02));
                 splatMesh.updateWorldMatrix(true, false);
                 robust.applyMatrix4(splatMesh.matrixWorld);
                 if (!robust.isEmpty()) box.copy(robust);

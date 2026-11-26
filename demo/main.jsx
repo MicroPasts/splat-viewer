@@ -22,6 +22,8 @@ function DemoApp() {
                     badge={DEMO_SPLAT.badge}
                     paradata={paradata}
                     initialTheme="light"
+                    mmPerUnit={889 / 4.543} 
+                    measureUnit="mm"
                 />
             </Suspense>
         </div>

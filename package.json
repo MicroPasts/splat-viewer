@@ -1,6 +1,9 @@
 {
   "name": "@micropasts/splat-viewer",
   "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Standalone Three.js + Spark Gaussian splat viewer for React and cultural heritage workflows",
   "type": "module",
   "main": "./dist/splat-viewer.umd.cjs",

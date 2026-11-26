@@ -1,0 +1,82 @@
+{
+  "recordId": "COLOSSAL-FOOT",
+  "title": "Colossal Foot splat: metadata and paradata",
+  "objectMetadata": [
+    { "label": "Object", "value": "Colossal Foot demo splat" },
+    { "label": "Provider", "value": "Daniel Pett" },
+    { "label": "Object type", "value": "Demonstration asset" },
+    { "label": "Collection record", "value": "British Museum 1784,0131.5" }
+  ],
+  "processingSummary": {
+    "fields": [
+      { "label": "Scan creator", "value": "Daniel Pett" },
+      { "label": "Capture method", "value": "Photogrammetry" },
+      { "label": "Training software", "value": "3D Splat App" },
+      { "label": "Capture date", "value": "Not documented" },
+      { "label": "Splat format", "value": "SPZ (compressed Gaussian splat)" }
+    ],
+    "ratings": [
+      { "label": "Coverage", "value": "80%" },
+      { "label": "Floaters / noise", "value": "Not assessed" },
+      { "label": "Colour fidelity", "value": "Not assessed" }
+    ]
+  },
+  "splatComponents": [
+    {
+      "name": "Gaussian positions, scales and rotations",
+      "statuses": ["PROVENANCE NOT DOCUMENTED"],
+      "notes": "Geometry of the splat cloud as supplied; the training process that produced it is not documented."
+    },
+    {
+      "name": "Colour and spherical harmonics",
+      "statuses": ["PROVENANCE NOT DOCUMENTED"],
+      "notes": "View-dependent colour data as supplied. The number of SH bands present is not documented."
+    }
+  ],
+  "assessment": [
+    { "label": "Overall description", "value": "Demonstration splat used to exercise the viewer." },
+    { "label": "Condition", "value": "Not applicable" },
+    { "label": "Recording challenges", "value": "Not documented" }
+  ],
+  "labNotes": "This is placeholder paradata for the demo. Fields marked 'Not documented' are placeholders, not assertions about the capture or training workflow.",
+  "captureTolerances": [
+    { "label": "Camera", "value": "Apple iPhone 17" },
+    { "label": "Lens and settings", "value": "Not documented" },
+    { "label": "Lighting", "value": "Gallery light" },
+    { "label": "Accuracy and resolution", "value": "Not documented" }
+  ],
+  "acquisitionChunks": [
+    {
+      "chunk": "Not documented",
+      "exposure": null,
+      "opticsAndFocus": null,
+      "rotationalSteps": null,
+      "images": 259
+    }
+  ],
+  "derivedAssets": {
+    "software": "Not documented",
+    "assets": [
+      {
+        "asset": "Colossal Foot demo splat",
+        "splats": 702489,
+        "shBands": null,
+        "training": "Not documented",
+        "alignment": "Not documented",
+        "tiePoints": null,
+        "filename": "colossal-foot.spz",
+        "format": "SPZ",
+        "size": "10.4mb"
+      }
+    ]
+  },
+  "extraSections": [
+    {
+      "title": "Source",
+      "fields": [
+        { "label": "Splat URL", "value": "https://micropasts.github.io/splat-viewersplats/colossal-foot.spz" }
+      ],
+      "notes": "Placeholder record adapted from the glb-viewer scarab example. Splat count and file size appear live in the Telemetry panel."
+    }
+  ]
+}
